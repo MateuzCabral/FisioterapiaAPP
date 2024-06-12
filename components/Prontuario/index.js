@@ -4,11 +4,9 @@ import {
   Text,
   TextInput,
   ScrollView,
-  Button,
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { Picker } from "@react-native-picker/picker";
 
 const Prontuario = () => {
   const [isSelected, setIsSelected] = useState("nao");
@@ -121,7 +119,7 @@ const Prontuario = () => {
             style={styles.input}
             multiline
             numberOfLines={7}
-            placeholder="Quais:"
+            placeholder="Descrição:"
           />
 
           <TextInput
@@ -130,6 +128,17 @@ const Prontuario = () => {
             numberOfLines={7}
             placeholder="Resultado de exames realizados:"
           />
+
+          <TouchableOpacity style={styles.buttonCirurgia}>
+            <Text
+              style={{
+                fontWeight: "bold",
+                color: "#fff",
+              }}
+            >
+              +
+            </Text>
+          </TouchableOpacity>
 
           {/* Doenças Concomitantes Anamnese */}
           <Text style={styles.subText}>Doenças Concomitantes:</Text>
@@ -781,7 +790,16 @@ const Prontuario = () => {
             placeholder="Musculo/Grupo"
           ></TextInput>
           <TextInput style={styles.input} placeholder="Grau"></TextInput>
-          <TouchableOpacity style={styles.button}>+</TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <Text
+              style={{
+                fontWeight: "bold",
+                color: "#fff",
+              }}
+            >
+              +
+            </Text>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.section}>
@@ -789,7 +807,16 @@ const Prontuario = () => {
           <TextInput style={styles.input} placeholder="Movimento"></TextInput>
           <TextInput style={styles.input} placeholder="Ativa"></TextInput>
           <TextInput style={styles.input} placeholder="Passiva"></TextInput>
-          <TouchableOpacity style={styles.button}>+</TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <Text
+              style={{
+                fontWeight: "bold",
+                color: "#fff",
+              }}
+            >
+              +
+            </Text>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.section}>
@@ -839,7 +866,16 @@ const Prontuario = () => {
           ></TextInput>
         </View>
 
-        <TouchableOpacity style={styles.button} onPress={() => {}} >Finalizar Prontuario</TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => {}}>
+          <Text
+            style={{
+              fontWeight: "bold",
+              color: "#fff",
+            }}
+          >
+            Finalizar Prontuario
+          </Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -863,7 +899,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 10,
+    padding: 20,
     textAlign: "center",
+    backgroundColor: "#00005D",
+    color: "#FFF"
   },
   section: {
     marginBottom: 20,
@@ -943,24 +982,35 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   checkboxTonus: {
-    width: '80px',
-    height: '30px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: 80,
+    height: 30,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 5,
     margin: 5,
   },
   button: {
-    width: '100%',
-    backgroundColor: '#0000d5',
-    color: '#fff',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: "100%",
+    backgroundColor: "#0000d5",
+    color: "#fff",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     padding: 12,
-    borderRadius: 5
-  }
+    borderRadius: 5,
+  },
+  buttonCirurgia: {
+    width: "100%",
+    backgroundColor: "#0000d5",
+    color: "#fff",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 12,
+    borderRadius: 5,
+    marginBottom: 20
+  },
 });
 
 export default Prontuario;
