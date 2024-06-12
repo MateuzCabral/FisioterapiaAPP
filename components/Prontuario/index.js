@@ -26,10 +26,12 @@ const Prontuario = () => {
   const [isSelectedDeam, setIsSelectedDeam] = useState(null);
 
   return (
-    <ScrollView >
+    <ScrollView>
+      {/* Prontuario */}
       <View style={styles.scrollStyle}>
         <Text style={styles.header}>Prontuario do paciente</Text>
 
+        {/* Primeira Section */}
         <View style={styles.section}>
           <TextInput style={styles.input} placeholder="Unidade:" />
 
@@ -38,6 +40,7 @@ const Prontuario = () => {
           <TextInput style={styles.input} placeholder="Data: 00/00/0000" />
         </View>
 
+        {/* Section de Dados Pessoais */}
         <View style={styles.section}>
           <Text style={styles.subHeader}>
             1 - Identificação do paciente/Dados pessoais
@@ -63,6 +66,7 @@ const Prontuario = () => {
           ))}
         </View>
 
+        {/* Section Anamnese */}
         <View style={styles.section}>
           <Text style={styles.subHeader}>2 - Anamnese</Text>
           {["Queixa Principal:", "HMA:", "HMP:", "AVD:"].map((field) => (
@@ -71,6 +75,7 @@ const Prontuario = () => {
             </React.Fragment>
           ))}
 
+          {/* Cirurgias Anamnese */}
           <View style={styles.checkboxContainer}>
             <Text style={styles.label}>Realizou Cirurgias?</Text>
             <View style={styles.checkInput}>
@@ -111,15 +116,25 @@ const Prontuario = () => {
             </View>
           </View>
 
-          <TextInput style={styles.input} placeholder="Quais:" />
+          <TextInput
+            style={styles.input}
+            multiline
+            numberOfLines={7}
+            placeholder="Quais:"
+          />
 
           <TextInput
             style={styles.input}
+            multiline
+            numberOfLines={7}
             placeholder="Resultado de exames realizados:"
           />
 
+          {/* Doenças Concomitantes Anamnese */}
+          <Text style={styles.subText}>Doenças Concomitantes:</Text>
           <View style={styles.checkboxContainer}>
-            <Text style={styles.label}>Doenças Concomitantes</Text>
+            {/* DM */}
+            <Text style={styles.label}>DM:</Text>
             <View style={styles.checkInput}>
               <TouchableOpacity
                 style={[
@@ -157,37 +172,79 @@ const Prontuario = () => {
               </TouchableOpacity>
             </View>
           </View>
+
+          {/* HAS */}
+          <View style={styles.checkboxContainer}>
+            <Text style={styles.label}>HAS:</Text>
+            <View style={styles.checkInput}>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedHAS === "sim" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedHAS("sim")}
+              >
+                <Text
+                  style={
+                    isSelectedHAS === "sim"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  S
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedHAS === "nao" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedHAS("nao")}
+              >
+                <Text
+                  style={
+                    isSelectedHAS === "nao"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  N
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <TextInput style={styles.input} placeholder="Outros:" multiline numberOfLines={4} />
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.subHeader}>3 - Antecedentes Familiares</Text>
+          <Text style={styles.subHeader}>3 - Antecedentes Familiares:</Text>
           <TextInput style={styles.input}></TextInput>
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.subHeader}>4 - Patologias Associadas</Text>
+          <Text style={styles.subHeader}>4 - Patologias Associadas:</Text>
           <TextInput style={styles.input}></TextInput>
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.subHeader}>5 - Antropometria</Text>
+          <Text style={styles.subHeader}>5 - Antropometria:</Text>
           <TextInput style={styles.input} placeholder="Peso:"></TextInput>
           <TextInput style={styles.input} placeholder="Altura:"></TextInput>
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.subHeader}>6 - Estado Geral</Text>
+          <Text style={styles.subHeader}>6 - Estado Geral:</Text>
           <TextInput style={styles.input}></TextInput>
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.subHeader}>7 - Independencia de Locomoção</Text>
+          <Text style={styles.subHeader}>7 - Independencia de Locomoção:</Text>
           <TextInput style={styles.input}></TextInput>
         </View>
 
         <View style={styles.section}>
           <Text style={styles.subHeader}>8 - Exames Fisicos</Text>
-          <Text>Dados Vitais</Text>
+          <Text style={styles.subText}>Dados Vitais</Text>
           <TextInput style={styles.input} placeholder="PA:"></TextInput>
           <TextInput style={styles.input} placeholder="FC:"></TextInput>
           <TextInput style={styles.input} placeholder="FR:"></TextInput>
@@ -196,7 +253,7 @@ const Prontuario = () => {
           <TextInput style={styles.input} placeholder="Temp:"></TextInput>
           <TextInput
             style={styles.input}
-            placeholder="Exames Especificos"
+            placeholder="Exames Especificos" multiline numberOfLines={5}
           ></TextInput>
 
           <Text>Tonus Muscular</Text>
@@ -280,7 +337,6 @@ const Prontuario = () => {
           <TextInput style={styles.input} placeholder="Inspeção"></TextInput>
           <TextInput style={styles.input} placeholder="Palpação"></TextInput>
           <TextInput style={styles.input} placeholder="Mensuração"></TextInput>
-          
         </View>
 
         <View style={styles.section}>
@@ -380,6 +436,11 @@ const styles = StyleSheet.create({
   subHeader: {
     fontSize: 16,
     fontWeight: "bold",
+    marginBottom: 10,
+  },
+  subText: {
+    fontSize: 14,
+    fontWeight: "600",
     marginBottom: 10,
   },
   label: {
