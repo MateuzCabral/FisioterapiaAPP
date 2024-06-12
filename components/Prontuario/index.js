@@ -253,7 +253,7 @@ const Prontuario = () => {
           <TextInput style={styles.input} placeholder="Temp:"></TextInput>
           <TextInput
             style={styles.input}
-            placeholder="Exames Especificos" multiline numberOfLines={5}
+            placeholder="Exames Especificos:" multiline numberOfLines={5}
           ></TextInput>
 
           <Text>Tonus Muscular</Text>
@@ -267,40 +267,220 @@ const Prontuario = () => {
 
           <TextInput
             style={styles.input}
-            placeholder="Distribuição topografica:"
+            multiline numberOfLines={5} placeholder="Distribuição topografica:"
           ></TextInput>
-          <TextInput style={styles.input} placeholder="Percepção:"></TextInput>
+          <TextInput style={styles.input} multiline numberOfLines={5} placeholder="Percepção:"></TextInput>
           <TextInput
             style={styles.input}
-            placeholder="Coordenação Dinamica e Estatica:"
+            multiline numberOfLines={5} placeholder="Coordenação Dinamica e Estatica:"
           ></TextInput>
 
-          <Text>Reflexos Profundos</Text>
-          <Text>Triciptal</Text>
-          <Picker style={styles.picker}>
-            <Picker.Item label="S" value="N" />
-            <Picker.Item label="N" value="S" />
-          </Picker>
-          <Text>Bicipital</Text>
-          <Picker style={styles.picker}>
-            <Picker.Item label="S" value="N" />
-            <Picker.Item label="N" value="S" />
-          </Picker>
-          <Text>Radial</Text>
-          <Picker style={styles.picker}>
-            <Picker.Item label="S" value="N" />
-            <Picker.Item label="N" value="S" />
-          </Picker>
-          <Text>Patelar</Text>
-          <Picker style={styles.picker}>
-            <Picker.Item label="S" value="N" />
-            <Picker.Item label="N" value="S" />
-          </Picker>
-          <Text>Calcanear</Text>
-          <Picker style={styles.picker}>
-            <Picker.Item label="S" value="N" />
-            <Picker.Item label="N" value="S" />
-          </Picker>
+          <Text style={styles.subText}>Reflexos Profundos</Text>
+          <View style={styles.checkboxContainer}>
+
+            {/* Tricipital */}
+            <Text style={styles.label}>Triciptal:</Text>
+            <View style={styles.checkInput}>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedTri === "sim" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedTri("sim")}
+              >
+                <Text
+                  style={
+                    isSelectedTri === "sim"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  S
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedTri === "nao" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedTri("nao")}
+              >
+                <Text
+                  style={
+                    isSelectedTri === "nao"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  N
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <View style={styles.checkboxContainer}>
+            {/* Bicipital */}
+            <Text style={styles.label}>Bicipital:</Text>
+            <View style={styles.checkInput}>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedBic === "sim" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedBic("sim")}
+              >
+                <Text
+                  style={
+                    isSelectedBic === "sim"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  S
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedBic === "nao" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedBic("nao")}
+              >
+                <Text
+                  style={
+                    isSelectedBic === "nao"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  N
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <View style={styles.checkboxContainer}>
+            {/* Radial */}
+            <Text style={styles.label}>Radial:</Text>
+            <View style={styles.checkInput}>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedRad === "sim" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedRad("sim")}
+              >
+                <Text
+                  style={
+                    isSelectedRad === "sim"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  S
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedRad === "nao" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedRad("nao")}
+              >
+                <Text
+                  style={
+                    isSelectedDM === "nao"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  N
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <View style={styles.checkboxContainer}>
+            {/* Patelar */}
+            <Text style={styles.label}>Patelar:</Text>
+            <View style={styles.checkInput}>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedPat === "sim" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedPat("sim")}
+              >
+                <Text
+                  style={
+                    isSelectedPat === "sim"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >S
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedPat === "nao" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedPat("nao")}
+              >
+                <Text
+                  style={
+                    isSelectedPat === "nao"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  N
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <View style={styles.checkboxContainer}>
+            {/* Calcanear */}
+            <Text style={styles.label}>Calcanear:</Text>
+            <View style={styles.checkInput}>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedCal === "sim" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedCal("sim")}
+              >
+                <Text
+                  style={
+                    isSelectedCal === "sim"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  S
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedCal === "nao" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedCal("nao")}
+              >
+                <Text
+                  style={
+                    isSelectedCal === "nao"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  N
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          
 
           <Text>Reflexos Superficiais</Text>
           <Text>Cutaneo Abdominal</Text>
