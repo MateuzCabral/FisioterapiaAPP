@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -12,6 +12,8 @@ import { Picker } from "@react-native-picker/picker";
 import { CheckBox } from "react-native-elements";
 
 const Prontuario = () => {
+  const [isSelected, setIsSelected] = useState(null);
+
   return (
     <ScrollView style={styles.input}>
       <Text style={styles.header}>Prontuario do paciente</Text>
@@ -57,23 +59,32 @@ const Prontuario = () => {
           </React.Fragment>
         ))}
 
+        <View style={styles.checkboxContainer}>
         <Text style={styles.label}>Realizou Cirurgias?</Text>
-        <View style={{
-          display: 'flex',
-          flex: 1,
-          }}>
-          <CheckBox title='S' style={{
-            backgroundColor: '#00005d',
-            color: '#fff',
-            fontWeight: 'bold'
-            }}/>
-
-          <CheckBox title='N' style={{
-            backgroundColor: '#00005d',
-            color: '#fff',
-            fontWeight: 'bold'
-          }}/>
-
+        <View style={styles.checkInput}>
+          <TouchableOpacity
+            style={[
+              styles.checkbox,
+              isSelected === 'sim' ? styles.checked : styles.unchecked,
+            ]}
+            onPress={() => setIsSelected('sim')}
+          >
+            <Text style={isSelected === 'sim' ? styles.checkedText : styles.uncheckedText}>
+              S
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[
+              styles.checkbox,
+              isSelected === 'nao' ? styles.checked : styles.unchecked,
+            ]}
+            onPress={() => setIsSelected('nao')}
+          >
+            <Text style={isSelected === 'nao' ? styles.checkedText : styles.uncheckedText}>
+              N
+            </Text>
+          </TouchableOpacity>
+        </View>
         </View>
 
         <Text style={styles.label}>Quais:</Text>
@@ -319,6 +330,51 @@ const styles = StyleSheet.create({
     height: 50,
     width: "100%",
     marginBottom: 10,
+  },
+  label: {
+    fontSize: 14,
+  },
+  checkboxContainer: {
+    flexDirection: 'row',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 5,
+    borderWidth: 1,
+    borderColor: "#ddd",
+    borderRadius: 5,
+  },
+  checkInput: {
+    flexDirection: 'row',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  checkbox: {
+    width: 20,
+    height: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 5,
+    borderRadius: 4,
+  },
+  checked: {
+    backgroundColor: '#00005d',
+  },
+  unchecked: {
+    backgroundColor: '#fff',
+    borderColor: '#000',
+    borderWidth: 1,
+  },
+  checkedText: {
+    fontSize: 12,
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  uncheckedText: {
+    fontSize: 12,
+    color: '#000',
+    fontWeight: 'bold',
   },
 });
 
