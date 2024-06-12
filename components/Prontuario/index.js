@@ -11,19 +11,20 @@ import {
 import { Picker } from "@react-native-picker/picker";
 
 const Prontuario = () => {
-  const [isSelected, setIsSelected] = useState(null);
-  const [isSelectedDM, setIsSelectedDM] = useState(null);
-  const [isSelectedHAS, setIsSelectedHAS] = useState(null);
-  const [isSelectedTri, setIsSelectedTri] = useState(null);
-  const [isSelectedBic, setIsSelectedBic] = useState(null);
-  const [isSelectedRad, setIsSelectedRad] = useState(null);
-  const [isSelectedPat, setIsSelectedPat] = useState(null);
-  const [isSelectedCal, setIsSelectedCal] = useState(null);
-  const [isSelectedCuAb, setIsSelectedCuAb] = useState(null);
-  const [isSelectedCuPla, setIsSelectedCuPla] = useState(null);
-  const [isSelectedCon, setIsSelectedCon] = useState(null);
-  const [isSelectedUlc, setIsSelectedUlc] = useState(null);
-  const [isSelectedDeam, setIsSelectedDeam] = useState(null);
+  const [isSelected, setIsSelected] = useState("nao");
+  const [isSelectedDM, setIsSelectedDM] = useState("nao");
+  const [isSelectedHAS, setIsSelectedHAS] = useState("nao");
+  const [isSelectedTri, setIsSelectedTri] = useState("nao");
+  const [isSelectedBic, setIsSelectedBic] = useState("nao");
+  const [isSelectedRad, setIsSelectedRad] = useState("nao");
+  const [isSelectedPat, setIsSelectedPat] = useState("nao");
+  const [isSelectedCal, setIsSelectedCal] = useState("nao");
+  const [isSelectedCuAb, setIsSelectedCuAb] = useState("nao");
+  const [isSelectedCuPla, setIsSelectedCuPla] = useState("nao");
+  const [isSelectedCon, setIsSelectedCon] = useState("nao");
+  const [isSelectedUlc, setIsSelectedUlc] = useState("nao");
+  const [isSelectedDeam, setIsSelectedDeam] = useState("nao");
+  const [isSelectedTonusM, setIsSelectedTonusM] = useState("normal");
 
   return (
     <ScrollView>
@@ -263,11 +264,49 @@ const Prontuario = () => {
             numberOfLines={5}
           ></TextInput>
 
-          <Text>Tonus Muscular</Text>
-          <Picker style={styles.picker}>
-            <Picker.Item label="Normal" value="Alterado" />
-            <Picker.Item label="Alterado" value="Normal" />
-          </Picker>
+          <View style={styles.checkboxContainer}>
+            <Text style={styles.label}>Tonus Muscular:</Text>
+            <View style={styles.checkInput}>
+              <TouchableOpacity
+                style={[
+                  styles.checkboxTonus,
+                  isSelectedTonusM === "normal"
+                    ? styles.checked
+                    : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedTonusM("normal")}
+              >
+                <Text
+                  style={
+                    isSelectedTonusM === "normal"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  NORMAL
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.checkboxTonus,
+                  isSelectedTonusM === "alterado"
+                    ? styles.checked
+                    : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedTonusM("alterado")}
+              >
+                <Text
+                  style={
+                    isSelectedTonusM === "alterado"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  ALTERADO
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
           <TextInput style={styles.input} placeholder="Tipo"></TextInput>
           <TextInput style={styles.input} placeholder="Grau"></TextInput>
           <TextInput style={styles.input} placeholder="Local"></TextInput>
@@ -404,7 +443,7 @@ const Prontuario = () => {
               >
                 <Text
                   style={
-                    isSelectedDM === "nao"
+                    isSelectedRad === "nao"
                       ? styles.checkedText
                       : styles.uncheckedText
                   }
@@ -580,7 +619,6 @@ const Prontuario = () => {
             </View>
           </View>
 
-
           <View style={styles.checkboxContainer}>
             {/* Calcanear */}
             <Text style={styles.label}>Contraturas e deformidades:</Text>
@@ -621,7 +659,6 @@ const Prontuario = () => {
               </TouchableOpacity>
             </View>
           </View>
-          
 
           <View style={styles.checkboxContainer}>
             {/* Calcanear */}
@@ -663,9 +700,13 @@ const Prontuario = () => {
               </TouchableOpacity>
             </View>
           </View>
-          <TextInput style={styles.input} multiline numberOfLines={4} placeholder="Local Ulcera"></TextInput>
+          <TextInput
+            style={styles.input}
+            multiline
+            numberOfLines={4}
+            placeholder="Local Ulcera"
+          ></TextInput>
 
-          
           <View style={styles.checkboxContainer}>
             {/* Calcanear */}
             <Text style={styles.label}>Deambula:</Text>
@@ -706,11 +747,31 @@ const Prontuario = () => {
               </TouchableOpacity>
             </View>
           </View>
-          <TextInput style={styles.input} multiline numberOfLines={4} placeholder="Descrição Deambula"></TextInput>
+          <TextInput
+            style={styles.input}
+            multiline
+            numberOfLines={4}
+            placeholder="Descrição Deambula"
+          ></TextInput>
 
-          <TextInput style={styles.input} multiline numberOfLines={5} placeholder="Inspeção"></TextInput>
-          <TextInput style={styles.input} multiline numberOfLines={5} placeholder="Palpação"></TextInput>
-          <TextInput style={styles.input} multiline numberOfLines={5} placeholder="Mensuração"></TextInput>
+          <TextInput
+            style={styles.input}
+            multiline
+            numberOfLines={5}
+            placeholder="Inspeção"
+          ></TextInput>
+          <TextInput
+            style={styles.input}
+            multiline
+            numberOfLines={5}
+            placeholder="Palpação"
+          ></TextInput>
+          <TextInput
+            style={styles.input}
+            multiline
+            numberOfLines={5}
+            placeholder="Mensuração"
+          ></TextInput>
         </View>
 
         <View style={styles.section}>
@@ -720,7 +781,7 @@ const Prontuario = () => {
             placeholder="Musculo/Grupo"
           ></TextInput>
           <TextInput style={styles.input} placeholder="Grau"></TextInput>
-          <Button title="+"></Button>
+          <TouchableOpacity style={styles.button}>+</TouchableOpacity>
         </View>
 
         <View style={styles.section}>
@@ -728,7 +789,7 @@ const Prontuario = () => {
           <TextInput style={styles.input} placeholder="Movimento"></TextInput>
           <TextInput style={styles.input} placeholder="Ativa"></TextInput>
           <TextInput style={styles.input} placeholder="Passiva"></TextInput>
-          <Button title="+"></Button>
+          <TouchableOpacity style={styles.button}>+</TouchableOpacity>
         </View>
 
         <View style={styles.section}>
@@ -778,7 +839,7 @@ const Prontuario = () => {
           ></TextInput>
         </View>
 
-        <Button title="Finalizar Prontuario" onPress={() => {}} />
+        <TouchableOpacity style={styles.button} onPress={() => {}} >Finalizar Prontuario</TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -881,6 +942,25 @@ const styles = StyleSheet.create({
     color: "#000",
     fontWeight: "bold",
   },
+  checkboxTonus: {
+    width: '80px',
+    height: '30px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    margin: 5,
+  },
+  button: {
+    width: '100%',
+    backgroundColor: '#0000d5',
+    color: '#fff',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 12,
+    borderRadius: 5
+  }
 });
 
 export default Prontuario;
