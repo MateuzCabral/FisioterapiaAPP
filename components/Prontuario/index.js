@@ -213,7 +213,12 @@ const Prontuario = () => {
               </TouchableOpacity>
             </View>
           </View>
-          <TextInput style={styles.input} placeholder="Outros:" multiline numberOfLines={4} />
+          <TextInput
+            style={styles.input}
+            placeholder="Outros:"
+            multiline
+            numberOfLines={4}
+          />
         </View>
 
         <View style={styles.section}>
@@ -253,7 +258,9 @@ const Prontuario = () => {
           <TextInput style={styles.input} placeholder="Temp:"></TextInput>
           <TextInput
             style={styles.input}
-            placeholder="Exames Especificos:" multiline numberOfLines={5}
+            placeholder="Exames Especificos:"
+            multiline
+            numberOfLines={5}
           ></TextInput>
 
           <Text>Tonus Muscular</Text>
@@ -267,17 +274,25 @@ const Prontuario = () => {
 
           <TextInput
             style={styles.input}
-            multiline numberOfLines={5} placeholder="Distribuição topografica:"
+            multiline
+            numberOfLines={5}
+            placeholder="Distribuição topografica:"
           ></TextInput>
-          <TextInput style={styles.input} multiline numberOfLines={5} placeholder="Percepção:"></TextInput>
           <TextInput
             style={styles.input}
-            multiline numberOfLines={5} placeholder="Coordenação Dinamica e Estatica:"
+            multiline
+            numberOfLines={5}
+            placeholder="Percepção:"
+          ></TextInput>
+          <TextInput
+            style={styles.input}
+            multiline
+            numberOfLines={5}
+            placeholder="Coordenação Dinamica e Estatica:"
           ></TextInput>
 
           <Text style={styles.subText}>Reflexos Profundos</Text>
           <View style={styles.checkboxContainer}>
-
             {/* Tricipital */}
             <Text style={styles.label}>Triciptal:</Text>
             <View style={styles.checkInput}>
@@ -417,7 +432,8 @@ const Prontuario = () => {
                       ? styles.checkedText
                       : styles.uncheckedText
                   }
-                >S
+                >
+                  S
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -480,43 +496,221 @@ const Prontuario = () => {
               </TouchableOpacity>
             </View>
           </View>
+
+          <Text style={styles.subText}>Reflexos Superficiais</Text>
+          <View style={styles.checkboxContainer}>
+            {/* Calcanear */}
+            <Text style={styles.label}>Cutaneo Abdominal:</Text>
+            <View style={styles.checkInput}>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedCuAb === "sim" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedCuAb("sim")}
+              >
+                <Text
+                  style={
+                    isSelectedCuAb === "sim"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  S
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedCuAb === "nao" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedCuAb("nao")}
+              >
+                <Text
+                  style={
+                    isSelectedCuAb === "nao"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  N
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <View style={styles.checkboxContainer}>
+            {/* Calcanear */}
+            <Text style={styles.label}>Cultaneo Plantar:</Text>
+            <View style={styles.checkInput}>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedCuPla === "sim" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedCuPla("sim")}
+              >
+                <Text
+                  style={
+                    isSelectedCuPla === "sim"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  S
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedCuPla === "nao" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedCuPla("nao")}
+              >
+                <Text
+                  style={
+                    isSelectedCuPla === "nao"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  N
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+
+          <View style={styles.checkboxContainer}>
+            {/* Calcanear */}
+            <Text style={styles.label}>Contraturas e deformidades:</Text>
+            <View style={styles.checkInput}>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedCon === "sim" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedCon("sim")}
+              >
+                <Text
+                  style={
+                    isSelectedCon === "sim"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  S
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedCon === "nao" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedCon("nao")}
+              >
+                <Text
+                  style={
+                    isSelectedCon === "nao"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  N
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
           
 
-          <Text>Reflexos Superficiais</Text>
-          <Text>Cutaneo Abdominal</Text>
-          <Picker style={styles.picker}>
-            <Picker.Item label="S" value="N" />
-            <Picker.Item label="N" value="S" />
-          </Picker>
-          <Text>Cutaneo Plantar</Text>
-          <Picker style={styles.picker}>
-            <Picker.Item label="S" value="N" />
-            <Picker.Item label="N" value="S" />
-          </Picker>
+          <View style={styles.checkboxContainer}>
+            {/* Calcanear */}
+            <Text style={styles.label}>Ulceras:</Text>
+            <View style={styles.checkInput}>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedUlc === "sim" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedUlc("sim")}
+              >
+                <Text
+                  style={
+                    isSelectedUlc === "sim"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  S
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedUlc === "nao" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedUlc("nao")}
+              >
+                <Text
+                  style={
+                    isSelectedUlc === "nao"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  N
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <TextInput style={styles.input} multiline numberOfLines={4} placeholder="Local Ulcera"></TextInput>
 
-          <Text>Contraturas e deformidades</Text>
-          <Picker style={styles.picker}>
-            <Picker.Item label="S" value="N" />
-            <Picker.Item label="N" value="S" />
-          </Picker>
+          
+          <View style={styles.checkboxContainer}>
+            {/* Calcanear */}
+            <Text style={styles.label}>Deambula:</Text>
+            <View style={styles.checkInput}>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedDeam === "sim" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedDeam("sim")}
+              >
+                <Text
+                  style={
+                    isSelectedDeam === "sim"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  S
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.checkbox,
+                  isSelectedDeam === "nao" ? styles.checked : styles.unchecked,
+                ]}
+                onPress={() => setIsSelectedDeam("nao")}
+              >
+                <Text
+                  style={
+                    isSelectedDeam === "nao"
+                      ? styles.checkedText
+                      : styles.uncheckedText
+                  }
+                >
+                  N
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <TextInput style={styles.input} multiline numberOfLines={4} placeholder="Descrição Deambula"></TextInput>
 
-          <Text>Ulceras</Text>
-          <Picker style={styles.picker}>
-            <Picker.Item label="S" value="N" />
-            <Picker.Item label="N" value="S" />
-          </Picker>
-          <TextInput style={styles.input} placeholder="Local"></TextInput>
-
-          <Text>Deambula</Text>
-          <Picker style={styles.picker}>
-            <Picker.Item label="S" value="N" />
-            <Picker.Item label="N" value="S" />
-          </Picker>
-          <TextInput style={styles.input} placeholder="Local"></TextInput>
-
-          <TextInput style={styles.input} placeholder="Inspeção"></TextInput>
-          <TextInput style={styles.input} placeholder="Palpação"></TextInput>
-          <TextInput style={styles.input} placeholder="Mensuração"></TextInput>
+          <TextInput style={styles.input} multiline numberOfLines={5} placeholder="Inspeção"></TextInput>
+          <TextInput style={styles.input} multiline numberOfLines={5} placeholder="Palpação"></TextInput>
+          <TextInput style={styles.input} multiline numberOfLines={5} placeholder="Mensuração"></TextInput>
         </View>
 
         <View style={styles.section}>
