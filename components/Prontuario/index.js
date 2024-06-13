@@ -4,11 +4,10 @@ import {
   Text,
   TextInput,
   ScrollView,
-  Button,
   StyleSheet,
   TouchableOpacity,
+  Image,
 } from "react-native";
-import { Picker } from "@react-native-picker/picker";
 
 const Prontuario = () => {
   const [isSelected, setIsSelected] = useState("nao");
@@ -26,12 +25,32 @@ const Prontuario = () => {
   const [isSelectedDeam, setIsSelectedDeam] = useState("nao");
   const [isSelectedTonusM, setIsSelectedTonusM] = useState("normal");
 
+  const [exams, setExams] = useState([{ description: "", result: "" }]);
+  const addExam = () => {
+    setExams([...exams, { description: "", result: "" }]);
+  };
+
+  const [muscleGroups, setMuscleGroups] = useState([{ muscle: "", grade: "" }]);
+  const addMuscleGroup = () => {
+    setMuscleGroups([...muscleGroups, { muscle: "", grade: "" }]);
+  };
+
+  const [movements, setMovements] = useState([
+    { movimento: "", ativa: "", passiva: "" },
+  ]);
+  const addMovement = () => {
+    setMovements([...movements, { movimento: "", ativa: "", passiva: "" }]);
+  };
+
   return (
     <ScrollView>
       {/* Prontuario */}
+      <Text style={styles.header}>Prontuario do paciente</Text>
+      <Image
+        style={styles.image}
+        source={require("../../assets/prontuarioImg.png")}
+      />
       <View style={styles.scrollStyle}>
-        <Text style={styles.header}>Prontuario do paciente</Text>
-
         {/* Primeira Section */}
         <View style={styles.section}>
           <TextInput style={styles.input} placeholder="Unidade:" />
@@ -117,19 +136,38 @@ const Prontuario = () => {
             </View>
           </View>
 
-          <TextInput
-            style={styles.input}
-            multiline
-            numberOfLines={7}
-            placeholder="Quais:"
-          />
+          {exams.map((exam, index) => (
+            <View key={index}>
+              <TextInput
+                style={styles.input}
+                multiline
+                numberOfLines={5}
+                placeholder="Descrição:"
+                value={exam.description}
+                onChangeText={(text) => {
+                  const newExams = [...exams];
+                  newExams[index].description = text;
+                  setExams(newExams);
+                }}
+              />
+              <TextInput
+                style={styles.input}
+                multiline
+                numberOfLines={5}
+                placeholder="Resultado de exames realizados:"
+                value={exam.result}
+                onChangeText={(text) => {
+                  const newExams = [...exams];
+                  newExams[index].result = text;
+                  setExams(newExams);
+                }}
+              />
+            </View>
+          ))}
 
-          <TextInput
-            style={styles.input}
-            multiline
-            numberOfLines={7}
-            placeholder="Resultado de exames realizados:"
-          />
+          <TouchableOpacity style={styles.buttonCirurgia} onPress={addExam}>
+            <Text style={{ fontWeight: "bold", color: "#fff" }}>+</Text>
+          </TouchableOpacity>
 
           {/* Doenças Concomitantes Anamnese */}
           <Text style={styles.subText}>Doenças Concomitantes:</Text>
@@ -218,7 +256,7 @@ const Prontuario = () => {
             style={styles.input}
             placeholder="Outros:"
             multiline
-            numberOfLines={4}
+            numberOfLines={5}
           />
         </View>
 
@@ -307,9 +345,9 @@ const Prontuario = () => {
               </TouchableOpacity>
             </View>
           </View>
-          <TextInput style={styles.input} placeholder="Tipo"></TextInput>
-          <TextInput style={styles.input} placeholder="Grau"></TextInput>
-          <TextInput style={styles.input} placeholder="Local"></TextInput>
+          <TextInput style={styles.input} placeholder="Tipo:"></TextInput>
+          <TextInput style={styles.input} placeholder="Grau:"></TextInput>
+          <TextInput style={styles.input} placeholder="Local:"></TextInput>
 
           <TextInput
             style={styles.input}
@@ -703,8 +741,8 @@ const Prontuario = () => {
           <TextInput
             style={styles.input}
             multiline
-            numberOfLines={4}
-            placeholder="Local Ulcera"
+            numberOfLines={5}
+            placeholder="Local Ulcera:"
           ></TextInput>
 
           <View style={styles.checkboxContainer}>
@@ -750,76 +788,134 @@ const Prontuario = () => {
           <TextInput
             style={styles.input}
             multiline
-            numberOfLines={4}
-            placeholder="Descrição Deambula"
+            numberOfLines={5}
+            placeholder="Descrição Deambula:"
           ></TextInput>
 
           <TextInput
             style={styles.input}
             multiline
             numberOfLines={5}
-            placeholder="Inspeção"
+            placeholder="Inspeção:"
           ></TextInput>
           <TextInput
             style={styles.input}
             multiline
             numberOfLines={5}
-            placeholder="Palpação"
+            placeholder="Palpação:"
           ></TextInput>
           <TextInput
             style={styles.input}
             multiline
             numberOfLines={5}
-            placeholder="Mensuração"
+            placeholder="Mensuração:"
           ></TextInput>
         </View>
 
         <View style={styles.section}>
           <Text style={styles.subHeader}>9 - Força Muscular</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Musculo/Grupo"
-          ></TextInput>
-          <TextInput style={styles.input} placeholder="Grau"></TextInput>
-          <TouchableOpacity style={styles.button}>+</TouchableOpacity>
+          {muscleGroups.map((group, index) => (
+            <View key={index}>
+              <TextInput
+                style={styles.input}
+                placeholder="Musculo/Grupo:"
+                value={group.muscle}
+                onChangeText={(text) => {
+                  const newMuscleGroups = [...muscleGroups];
+                  newMuscleGroups[index].muscle = text;
+                  setMuscleGroups(newMuscleGroups);
+                }}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Grau:"
+                value={group.grade}
+                onChangeText={(text) => {
+                  const newMuscleGroups = [...muscleGroups];
+                  newMuscleGroups[index].grade = text;
+                  setMuscleGroups(newMuscleGroups);
+                }}
+              />
+            </View>
+          ))}
+          <TouchableOpacity style={styles.button} onPress={addMuscleGroup}>
+            <Text style={{ fontWeight: "bold", color: "#fff" }}>+</Text>
+          </TouchableOpacity>
         </View>
 
+        {/* Section ADM */}
         <View style={styles.section}>
           <Text style={styles.subHeader}>10 - ADM</Text>
-          <TextInput style={styles.input} placeholder="Movimento"></TextInput>
-          <TextInput style={styles.input} placeholder="Ativa"></TextInput>
-          <TextInput style={styles.input} placeholder="Passiva"></TextInput>
-          <TouchableOpacity style={styles.button}>+</TouchableOpacity>
+          {movements.map((movement, index) => (
+            <View key={index}>
+              <TextInput
+                style={styles.input}
+                placeholder="Movimento:"
+                value={movement.movimento}
+                onChangeText={(text) => {
+                  const newMovements = [...movements];
+                  newMovements[index].movimento = text;
+                  setMovements(newMovements);
+                }}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Ativa:"
+                value={movement.ativa}
+                onChangeText={(text) => {
+                  const newMovements = [...movements];
+                  newMovements[index].ativa = text;
+                  setMovements(newMovements);
+                }}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Passiva:"
+                value={movement.passiva}
+                onChangeText={(text) => {
+                  const newMovements = [...movements];
+                  newMovements[index].passiva = text;
+                  setMovements(newMovements);
+                }}
+              />
+            </View>
+          ))}
+          <TouchableOpacity style={styles.button} onPress={addMovement}>
+            <Text style={{ fontWeight: "bold", color: "#fff" }}>+</Text>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.section}>
           <Text style={styles.subHeader}>11 - Complementos</Text>
           <TextInput
             style={styles.input}
-            placeholder="Sensibilidade"
+            placeholder="Sensibilidade:"
           ></TextInput>
           <TextInput style={styles.input} placeholder="Dor: 0 a 10"></TextInput>
-          <TextInput style={styles.input} placeholder="Clonus"></TextInput>
+          <TextInput style={styles.input} placeholder="Clonus:"></TextInput>
           <TextInput
             style={styles.input}
-            placeholder="Reflexos e Reações"
+            placeholder="Reflexos e Reações:"
           ></TextInput>
           <TextInput
             style={styles.input}
-            placeholder="Ausculta Cardiaca"
+            placeholder="Ausculta Cardiaca:"
           ></TextInput>
           <TextInput
             style={styles.input}
-            placeholder="Testes Especiais"
+            placeholder="Testes Especiais:"
           ></TextInput>
           <TextInput
             style={styles.input}
-            placeholder="Avaliação Funcional"
+            placeholder="Avaliação Funcional:"
           ></TextInput>
-          <TextInput style={styles.input} placeholder="Observações"></TextInput>
           <TextInput
             style={styles.input}
-            placeholder="Exames Complementares/Laudos"
+            placeholder="Observações:"
+          ></TextInput>
+          <TextInput
+            style={styles.input}
+            placeholder="Exames Complementares/Laudos:"
           ></TextInput>
         </View>
 
@@ -827,7 +923,9 @@ const Prontuario = () => {
           <Text style={styles.subHeader}>12 - Objetivos Fisioterapeutico</Text>
           <TextInput
             style={styles.input}
-            placeholder="Descrição objetivo fisioterapeutico/ Objetivo do tratamento"
+            multiline
+            numberOfLines={5}
+            placeholder="Descrição objetivo fisioterapeutico/ Objetivo do tratamento:"
           ></TextInput>
         </View>
 
@@ -835,11 +933,22 @@ const Prontuario = () => {
           <Text style={styles.subHeader}>13 - Condutas Fisioterapeuticas</Text>
           <TextInput
             style={styles.input}
-            placeholder="Descrição conduta fisioterapeutica/ Condutas"
+            multiline
+            numberOfLines={5}
+            placeholder="Descrição conduta fisioterapeutica/ Condutas:"
           ></TextInput>
         </View>
 
-        <TouchableOpacity style={styles.button} onPress={() => {}} >Finalizar Prontuario</TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => {}}>
+          <Text
+            style={{
+              fontWeight: "bold",
+              color: "#fff",
+            }}
+          >
+            Finalizar Prontuario
+          </Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -863,7 +972,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 10,
+    padding: 30,
     textAlign: "center",
+    backgroundColor: "#00005D",
+    color: "#FFF",
   },
   section: {
     marginBottom: 20,
@@ -943,24 +1055,41 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   checkboxTonus: {
-    width: '80px',
-    height: '30px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: 80,
+    height: 30,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 5,
     margin: 5,
   },
   button: {
-    width: '100%',
-    backgroundColor: '#0000d5',
-    color: '#fff',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: "100%",
+    backgroundColor: "#0000d5",
+    color: "#fff",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     padding: 12,
-    borderRadius: 5
-  }
+    borderRadius: 5,
+  },
+  buttonCirurgia: {
+    width: "100%",
+    backgroundColor: "#0000d5",
+    color: "#fff",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 12,
+    borderRadius: 5,
+    marginBottom: 20,
+  },
+  image: {
+    width: 100,
+    height: 100,
+    alignSelf: "center",
+    marginTop: 10,
+  },
 });
 
 export default Prontuario;
