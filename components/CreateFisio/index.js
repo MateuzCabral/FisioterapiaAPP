@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#ddd",
     borderRadius: 5,
-    padding: 16,
+    padding: 8,
     marginBottom: 15,
     fontStyle: "italic",
     fontWeight: "light",
@@ -237,7 +237,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#ddd",
     borderRadius: 5,
-    padding: 8,
     marginBottom: 15,
   },
   passwordInput: {
