@@ -111,12 +111,14 @@ const styles = StyleSheet.create({
     marginTop: 60,
   },
   imagemBotao: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
+    marginBottom: 5
   },
   textoBotao: {
     textAlign: "center",
     fontSize: 12,
+    paddingHorizontal: 5
   },
   textoHome: {
     position: "absolute",
