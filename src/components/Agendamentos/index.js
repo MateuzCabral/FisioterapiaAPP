@@ -4,6 +4,7 @@ import ModalAgendamentoCoord from '../ModalAgendamentoCoord';
 import button from '../../assets/button.png';
 import iconPendente from '../../assets/pendente.png';
 import iconCancelado from '../../assets/cancelado.png';
+import CancelModal from '../CancelModal';
 
 const students = [
   { pacientes: 'Junio', dataConsulta: '00/00/00', fisioetapeuta: 'Cleiton', status: 'cancelado' },
@@ -43,7 +44,11 @@ const StudentsCard = ({ pacientes, dataConsulta, fisioetapeuta, status, onPress 
           <Text style={styles.value}>{fisioetapeuta}</Text>
         </View>
       </View>
-      <TouchableOpacity activeOpacity={0.5} style={[styles.button, { backgroundColor: cardColor }]} onPress={onPress}>
+      <TouchableOpacity
+        activeOpacity={0.5}
+        style={[styles.button, { backgroundColor: cardColor }]}
+        onPress={() => onPress(status)}
+      >
         <Image source={iconSource} style={styles.icon} />
       </TouchableOpacity>
     </View>
@@ -52,8 +57,10 @@ const StudentsCard = ({ pacientes, dataConsulta, fisioetapeuta, status, onPress 
 
 const Agendamentos = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [selectedStatus, setSelectedStatus] = useState(null);
 
-  const handleButtonPress = () => {
+  const handleButtonPress = (status) => {
+    setSelectedStatus(status);
     setModalVisible(true);
   };
 
@@ -68,7 +75,7 @@ const Agendamentos = () => {
           data={students}
           renderItem={({ item }) => (
             <StudentsCard
-              pacientes={item.pacientes} 
+              pacientes={item.pacientes}
               dataConsulta={item.dataConsulta}
               fisioetapeuta={item.fisioetapeuta}
               status={item.status}
@@ -80,7 +87,11 @@ const Agendamentos = () => {
         />
       </View>
 
-      <ModalAgendamentoCoord modalVisible={modalVisible} closeModal={closeModal} />
+      {selectedStatus === 'cancelado' ? (
+        <CancelModal modalVisible={modalVisible} closeModal={closeModal} />
+      ) : (
+        <ModalAgendamentoCoord modalVisible={modalVisible} closeModal={closeModal} />
+      )}
     </>
   );
 };
@@ -105,7 +116,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.2,
     borderColor: '#000',
     marginBottom: 20,
-    flex: 1
+    flex: 1,
   },
   cardContent: {
     flexDirection: 'row',
@@ -123,7 +134,7 @@ const styles = StyleSheet.create({
   label2: {
     fontWeight: 'bold',
     color: '#333',
-    marginTop: 10
+    marginTop: 10,
   },
   value: {
     color: '#333',
