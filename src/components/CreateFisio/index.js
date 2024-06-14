@@ -80,7 +80,7 @@ export default function CreateFisio() {
       <View style={styles.container}>
         <Image
           style={styles.image}
-          source={require("../../../assets/Logo_iesgo.png")}
+          source={require("../../assets/Logo_iesgo.png")}
         />
         <Text style={styles.subHeader}>Criar conta para fisioterapeuta</Text>
         <TextInput

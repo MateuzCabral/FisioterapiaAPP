@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { Ionicons } from "@expo/vector-icons";
 
 export default function Home() {
   const navigation = useNavigation();
@@ -11,7 +10,7 @@ export default function Home() {
       <View style={styles.viewTopo}>
         <Text style={styles.textoHome}>Olá, Coordenador</Text>
         <Image
-          source={require("../../../assets/Logo_iesgo.png")}
+          source={require("../../assets/Logo_iesgo.png")}
           style={styles.logoIesgo}
         />
         <Text style={styles.textoFisio}>Fisioterapia</Text>
@@ -23,7 +22,7 @@ export default function Home() {
         <View style={styles.viewBotao}>
           <TouchableOpacity style={styles.botaoServico}>
             <Image
-              source={require("../../../assets/Calendar2.png")}
+              source={require("../../assets/Calendar2.png")}
               style={styles.imagemBotao}
             />
             <Text style={styles.textoBotao}>Todos os Agendamentos</Text>
@@ -31,7 +30,7 @@ export default function Home() {
 
           <TouchableOpacity style={styles.botaoServico}>
             <Image
-              source={require("../../../assets/add-user-friends-svgrepo-com.png")}
+              source={require("../../assets/add-user-friends-svgrepo-com.png")}
               style={styles.imagemBotao}
             />
             <Text style={styles.textoBotao}>Cadastrar Fisioterapeuta</Text>
@@ -39,7 +38,7 @@ export default function Home() {
 
           <TouchableOpacity style={styles.botaoServico}>
             <Image
-              source={require("../../../assets/settings-svgrepo-com.png")}
+              source={require("../../assets/settings-svgrepo-com.png")}
               style={styles.imagemBotao}
             />
             <Text style={styles.textoBotao}>Gerenciar Alunos</Text>
@@ -47,7 +46,7 @@ export default function Home() {
 
           <TouchableOpacity style={styles.botaoServico}>
             <Image
-              source={require("../../../assets/whatsapp-svgrepo-com.png")}
+              source={require("../../assets/whatsapp-svgrepo-com.png")}
               style={styles.imagemBotao}
             />
             <Text style={styles.textoBotao}>Suporte</Text>
@@ -55,7 +54,7 @@ export default function Home() {
 
           <TouchableOpacity style={styles.botaoServico}>
             <Image
-              source={require("../../../assets/report-svgrepo-com.png")}
+              source={require("../../assets/report-svgrepo-com.png")}
               style={styles.imagemBotao}
             />
             <Text style={styles.textoBotao}>Relatorio dos pacientes</Text>
@@ -63,7 +62,7 @@ export default function Home() {
 
           <TouchableOpacity style={styles.botaoServico}>
             <Image
-              source={require("../../../assets/tasks-badged-svgrepo-com.png")}
+              source={require("../../assets/tasks-badged-svgrepo-com.png")}
               style={styles.imagemBotao}
             />
             <Text style={styles.textoBotao}>Ficha de evolução</Text>

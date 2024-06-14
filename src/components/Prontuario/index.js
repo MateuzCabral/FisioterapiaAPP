@@ -47,7 +47,7 @@ const Prontuario = () => {
       {/* Prontuario */}
       <Image
         style={styles.image}
-        source={require("../../../assets/prontuarioImg.png")}
+        source={require("../../assets/prontuarioImg.png")}
       />
       <View style={styles.scrollStyle}>
         {/* Primeira Section */}

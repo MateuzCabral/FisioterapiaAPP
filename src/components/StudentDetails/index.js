@@ -7,7 +7,7 @@ import {
   Image,
   ScrollView,
 } from "react-native";
-import iesgo from "../../../assets/iesgo.png";
+import iesgo from "../../assets/iesgo.png";
 
 const CustomTextInput = React.forwardRef(
   ({ placeholder, keyboardType, value }, ref) => (
