@@ -45,10 +45,9 @@ const Prontuario = () => {
   return (
     <ScrollView>
       {/* Prontuario */}
-      <Text style={styles.header}>Prontuario do paciente</Text>
       <Image
         style={styles.image}
-        source={require("../../assets/prontuarioImg.png")}
+        source={require("../../../assets/prontuarioImg.png")}
       />
       <View style={styles.scrollStyle}>
         {/* Primeira Section */}
@@ -576,6 +575,7 @@ const Prontuario = () => {
 
           <Text style={styles.subText}>Reflexos Superficiais</Text>
           <View style={styles.checkboxContainer}>
+
             {/* Calcanear */}
             <Text style={styles.label}>Cutaneo Abdominal:</Text>
             <View style={styles.checkInput}>
@@ -618,6 +618,7 @@ const Prontuario = () => {
 
           <View style={styles.checkboxContainer}>
             {/* Calcanear */}
+            
             <Text style={styles.label}>Cultaneo Plantar:</Text>
             <View style={styles.checkInput}>
               <TouchableOpacity
@@ -1088,7 +1089,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     alignSelf: "center",
-    marginTop: 10,
+    marginTop: 20,
   },
 });
 

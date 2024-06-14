@@ -77,19 +77,10 @@ export default function CreateFisio() {
 
   return (
     <ScrollView>
-      <View style={styles.headerContainer}>
-        <Ionicons
-          name="arrow-back"
-          size={24}
-          color="#FFF"
-          style={styles.arrowIcon}
-        />
-        <Text style={styles.header}>Cadastrar Aluno</Text>
-      </View>
       <View style={styles.container}>
         <Image
           style={styles.image}
-          source={require("../../assets/Logo_iesgo.png")}
+          source={require("../../../assets/Logo_iesgo.png")}
         />
         <Text style={styles.subHeader}>Criar conta para fisioterapeuta</Text>
         <TextInput
@@ -178,9 +169,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     backgroundColor: "#00005D",
     paddingVertical: 35,
-  },
-  arrowIcon: {
-    marginRight: -20,
   },
   container: {
     padding: 10,
