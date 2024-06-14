@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, FlatList, Image } from 'react-native';
-import button from '../../../assets/button.png';
+import button from '../../assets/button.png';
 import ModalStundets from '../Modal';
 
 const students = [

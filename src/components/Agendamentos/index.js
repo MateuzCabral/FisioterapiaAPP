@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, FlatList, Image } from 'react-native';
 import ModalAgendamentoCoord from '../ModalAgendamentoCoord';
-import button from '../../../assets/button.png';
-import iconPendente from '../../../assets/pendente.png';
-import iconCancelado from '../../../assets/cancelado.png';
+import button from '../../assets/button.png';
+import iconPendente from '../../assets/pendente.png';
+import iconCancelado from '../../assets/cancelado.png';
 
 const students = [
   { pacientes: 'Junio', dataConsulta: '00/00/00', fisioetapeuta: 'Cleiton', status: 'cancelado' },
@@ -102,7 +102,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
-    elevation: 10,
     borderWidth: 0.2,
     borderColor: '#000',
     marginBottom: 20,
