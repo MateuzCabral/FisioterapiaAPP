@@ -12,9 +12,9 @@ const patients = [
 export default function Patient() {
   return (
     <View style={styles.container}>
-      {patients.map((student, nome) => (
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>{student.nome}</Text>
+      {patients.map((patient, index) => (
+        <TouchableOpacity key={index} style={styles.button}>
+          <Text style={styles.buttonText}>{patient.nome}</Text>
         </TouchableOpacity>
       ))}
     </View>
