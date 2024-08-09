@@ -62,7 +62,7 @@ $ npm install
 ```
 $ npm run start
 ```
-Execute no emulador Android Studio:
+Ou execute no emulador Android Studio:
 ```
 $ npm run android
 ```
